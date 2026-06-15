@@ -1,4 +1,5 @@
 using System;
+using GameStore.API.DTOs;
 
 namespace GameStore.API;
 

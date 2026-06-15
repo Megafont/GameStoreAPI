@@ -1,4 +1,4 @@
-namespace GameStore.API;
+namespace GameStore.API.DTOs;
 
 // A DTO (Data Transfer Object) is a simple object that is used to transfer data between layers of an application.
 // It is often used to transfer data from the database layer to the presentation layer, or from the presentation layer to the
