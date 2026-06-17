@@ -26,6 +26,13 @@ public static class DataExtensions
         //       In VS Code, you can kill the termain by going to the terminal tab, and in its right pane, right-click the terminal you want to kill and select "Kill Terminal". You can also just select the terminal in the list and press Del.
         var connectionString = builder.Configuration.GetConnectionString("GameStore");
 
+        // DbContext has a Scoped service lifetime because:
+        // 1. It ensures that a new instance of DbContext is created per request, which is important for maintaining the integrity of the unit of work pattern. Each request can be treated as a separate unit of work, and having a new DbContext instance for each request helps to ensure that changes made during one request do not interfere with changes made during another request.
+        // 2. Database connections are a limited and expensive resource. Using a Scoped lifetime allows for efficient management of database connections by creating a new DbContext instance for each request and disposing of it at the end of the request, which helps to prevent connection leaks and ensures that connections are properly released back to the connection pool.
+        // 3. DbContext is not thread-safe. Scoped avoids concurrency issues that can arise from sharing a single DbContext instance across multiple requests or threads. Each request gets its own DbContext instance, preventing conflicts and ensuring thread safety.
+        // 4. Makes it easier to manage transactions and ensure data consistency within a single request
+        // 5. Reusing a DbContext instance can lead to increased memory usage and potential memory leaks due to tracking of entities. Scoped allows for proper disposal of DbContext instances at the end of each request, preventing memory leaks and ensuring efficient resource management.
+
         builder.Services.AddSqlite<GameStoreContext>(
             connectionString,
             optionsAction: options => options.UseSeeding((context, _) =>

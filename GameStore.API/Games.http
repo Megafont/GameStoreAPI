@@ -5,7 +5,7 @@ GET http://localhost:5266/games
 
 ###
 
-GET http://localhost:5266/games/3
+GET http://localhost:5266/games/2
 
 ###
 
@@ -14,26 +14,42 @@ Content-Type: application/json
 
 {
     "title": "Super Mario Bros. Wonder",
-    "genre": "Platformer",
+    "genreId": 3,
     "price": 59.99,
     "releaseDate": "2023-10-20"
 }
 
 ###
 
-PUT http://localhost:5266/games/1
+POST http://localhost:5266/games
+Content-Type: application/json
+
+{
+    "title": "Street Fighter 2",
+    "genreId": 1,
+    "price": 9.99,
+    "releaseDate": "1991-02-01"
+}
+
+###
+
+PUT http://localhost:5266/games/2
 Content-Type: application/json
 
 {
     "title": "Street Fighter II Turbo",
-    "genre": "Fighting",
-    "price": 9.99,
+    "genreId": 1,
+    "price": 19.99,
     "releaseDate": "1992-07-15"
 }
 
 ###
 
-DELETE http://localhost:5266/games/1
+DELETE http://localhost:5266/games/3
+
+###
+
+GET http://localhost:5266/genres
 
 ###
 

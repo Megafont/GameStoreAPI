@@ -11,11 +11,11 @@ namespace GameStore.API.DTOs;
 /// A DTO that represents a game.
 /// </summary>
 /// <remarks>
-/// This implementation of GameDTO is equivalent to the one below (GameDTO2), but it is more concise and easier to read.
+/// This implementation of GameSummaryDTO is equivalent to the one below (GameSummaryDTO2), but it is more concise and easier to read.
 /// It uses the new record type, which is a reference type that provides built-in functionality for value-based equality, immutability, and with-expressions.
 /// The record type is ideal for DTOs because it allows us to easily create immutable objects that can be compared based on their values rather than their references.
 /// </remarks>
-public record GameDTO(
+public record GameSummaryDTO(
     int Id,
     string Title,
     string Genre,
@@ -25,7 +25,7 @@ public record GameDTO(
 
 
 /*
-public record class GameDTO2
+public record class GameSummaryDTO2
 {
     public int Id { get; init; }
     public string Title { get; init; }

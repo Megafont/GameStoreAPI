@@ -3,6 +3,7 @@
 // https://www.youtube.com/watch?v=YbRe4iIVYJk
 
 using GameStore.API;
+using GameStore.API.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,11 @@ builder.AddGameStoreDb(); // This is the second extension method we declared in 
 var app = builder.Build();
 
 app.MapGamesEndpoints(); // This is the extension method we declared in GamesEndpoints.cs that maps all the endpoints related to games.
+app.MapGenresEndpoints(); // This is the extension method we declared in GenreEndpoints.cs that maps all the endpoints related to genres.
 
 app.MigrateDb(); // This is the extension method we declared in DataExtensions.cs that applies any pending migrations to the database. This ensures that our database schema is up to date with our EF Core models in the Data folder when the application starts.
 
 app.Run();
+
 
 
